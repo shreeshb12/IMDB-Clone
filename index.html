@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Font Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Namma Cinema</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.png"/>
     <!-- Bootstarp -->
@@ -38,5 +38,38 @@
         <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
       </form>
     </nav>
+    <div id="super-container" class="d-flex space-between">
+      <aside id="suggestions-container" class="d-flex p-5">
+        <p class="text-muted fs-1 pt-3 ms-4" style="display:none;">Your search results will appear here</p>
+        <div id="card-container" class="animate__animated animate__zoomIn">
+          <div class="card my-2" data-id=" Kantara " style="color:#121515;">
+            <a href="movie.html">
+              <img src="https://m.media-amazon.com/images/M/MV5BNjQyNGI5OWEtZjI1Yy00NDVjLWE4MTAtMzRlNzU1NzM2OGVkXkEyXkFqcGdeQXVyMTA1NzEzOTU1._V1_SX300.jpg " class="card-img-top" alt="..." data-id="Kantara ">
+              </a>
+              <div class="card-body text-start" style="background-color: #121515;">
+                <a href="movie.html"></a>
+                <h5 class="card-title"><a href="movie.html">
+                  </a><a href="movie.html" data-id="Kantara "> Kantara  </a>
+                </h5>
+    
+                <p class="card-text d-flex space-between w-100">
+                  
+                  <i class='fa fa-star' style="color:#FDCE23">
+                    <span id="rating" style="color:white">&nbsp;8.3</span>
+                  </i>
+    
+                  <button class="add-fav" style="background-color: inherit;">
+                    <i class="fa fa-heart add-fav" data-id="Kantara"></i>
+                  </button>
+                </p>
+              </div>
+            
+          </div>
+        </div>
+      </aside>
+      <aside id="favourites" class="d-flex space-between flex-column align-items">
+        <h1><u>Favourites</u></h1>
+      </aside>
+    </div>
 </body>
 </html>

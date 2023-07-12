@@ -18,12 +18,28 @@ body{
 ::placeholder {
   color: #D2D3D5;
 }
+
+.d-flex{
+  display:flex;
+}
+.align-items{
+  align-items: center;
+}
+.space-between{
+  justify-content: space-between;
+}
+
+.flex-column{
+  flex-direction: column;
+}
+/* Nav */
 nav{
   background-color: #212529 ;
   display: flex;
   justify-content:flex-start;
   padding: 1rem;
 }
+
 #brand{
   display:flex;
   align-items: center;
@@ -67,4 +83,24 @@ input{
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   background-color: var(--logo-color);
+}
+
+/* movie card */
+.card{
+  width: 10rem;
+  height:15rem;
+  border:0;
+}
+.add-fav{
+  padding: 0;
+  border: 0;
+  color:lightgray;
+}
+
+/* favourites */
+#favourites{
+  width: 25vw;
+  height: 100vh;
+  background-color: var(--favourite-section-color);
+  text-align: center;
 }
