@@ -6,7 +6,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Namma Cinema</title>
-    <link rel="icon" type="image/x-icon" href="./images/favicon.png"/>
+    <link rel="icon" type="image/x-icon" href="./images/icons8-popcorn-64.png"/>
     <!-- Bootstarp -->
     <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -28,48 +28,73 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-    <nav>
+  <!-- nav bar -->
+    <nav class="navbar d-flex sticky-top">
       <div id="brand">
         <span id="brand-icon" class="animate__animated animate__tada"><img src="./images/icons8-popcorn-64.png"/></span>
-        <span id="brand-name">Namma Cinema</span>
+        <span id="brand-name">ನಮ್ಮ Cinema</span>
       </div>
-      <form action="" method="get">
+      <form action="" method="get" class="search-container">
         <input type="text" id="search" placeholder="Search">
         <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
       </form>
+      <div id="show-favourites"><i class="fa fa-bars"></i></div>
     </nav>
-    <div id="super-container" class="d-flex space-between">
-      <aside id="suggestions-container" class="d-flex p-5">
-        <p class="text-muted fs-1 pt-3 ms-4" style="display:none;">Your search results will appear here</p>
-        <div id="card-container" class="animate__animated animate__zoomIn">
-          <div class="card my-2" data-id=" Kantara " style="color:#121515;">
+    <!-- super-container -->
+    <div id="super-container" class="d-flex ">
+      <p id="empty-text" class="text-muted fs-1 p-3 m-4">Your search results will <br/>appear here...</p>
+      <!-- main -->
+      <main id="suggestions-container" class="d-flex p-3">
+        <!-- card-container -->
+        <div id="card-container" class="animate__animated animate__zoomIn ">
+          <!--<div class="card my-2" data-id=" Kantara " style="color:#121515;">
             <a href="movie.html">
               <img src="https://m.media-amazon.com/images/M/MV5BNjQyNGI5OWEtZjI1Yy00NDVjLWE4MTAtMzRlNzU1NzM2OGVkXkEyXkFqcGdeQXVyMTA1NzEzOTU1._V1_SX300.jpg " class="card-img-top" alt="..." data-id="Kantara ">
-              </a>
-              <div class="card-body text-start" style="background-color: #121515;">
-                <a href="movie.html"></a>
-                <h5 class="card-title"><a href="movie.html">
-                  </a><a href="movie.html" data-id="Kantara "> Kantara  </a>
-                </h5>
+            </a>
+            <div class="card-body" style="background-color: #121515;">
+              <a href="movie.html"></a>
+              <h5 class="card-title">
+                <a href="movie.html" data-id="Kantara "> Kantara  </a>
+              </h5>
     
-                <p class="card-text d-flex space-between w-100">
+              <p class="card-text d-flex space-between w-100">
                   
-                  <i class='fa fa-star' style="color:#FDCE23">
-                    <span id="rating" style="color:white">&nbsp;8.3</span>
-                  </i>
+                <i class='fa fa-star' style="color:#FDCE23">
+                  <span id="rating" style="color:white">&nbsp;8.3</span>
+                </i>
     
-                  <button class="add-fav" style="background-color: inherit;">
-                    <i class="fa fa-heart add-fav" data-id="Kantara"></i>
-                  </button>
-                </p>
-              </div>
-            
+                <button class="fav-btn" style="background-color: inherit;">
+                  <i class="fa fa-heart add-fav" data-id="Kantara"></i>
+                </button>
+              </p>
+            </div>            
+          </div>-->
+        </div>
+      </main>
+      <!-- aside -->
+      <aside id="favourites" class="d-flex flex-column ">
+        <h2>Favourites</h2>
+        <div id="fav-movies-container" class=".flex-column">
+          <div class="fav-movie-card d-flex justify-content-between align-content-center my-2">
+            <img src="https://m.media-amazon.com/images/M/MV5BNjQyNGI5OWEtZjI1Yy00NDVjLWE4MTAtMzRlNzU1NzM2OGVkXkEyXkFqcGdeQXVyMTA1NzEzOTU1._V1_SX300.jpg" alt="" class="fav-movie-poster">
+            <div class="movie-card-details ps-2">
+              <p class="movie-name mt-3 mb-0">
+              <a href="movie.html" class="fav-movie-name" data-id="Kantara">Kantara</a><a> 
+              </a></p><a>
+              <small class="text-muted">2022</small>
+            </a></div>
+            <a>
+            <div class="delete-btn my-4">
+                <i class="fa fa-trash" data-id="Kantara"></i>
+            </div>
+            </a>
           </div>
         </div>
       </aside>
-      <aside id="favourites" class="d-flex space-between flex-column align-items">
-        <h1><u>Favourites</u></h1>
-      </aside>
     </div>
+    <footer class='bg-dark'>
+      <h5>Made with <i class="fa fa-heart" style="color: #ec0638;"></i> by <a href="https://github.com/shreeshb12" target="_blank" style="">Shreesh Badiger</a></i></h5>
+    </footer>
+    <script type="text/javascript" src="./js/index.js"></script>
 </body>
 </html>
