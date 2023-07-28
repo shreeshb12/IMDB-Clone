@@ -152,7 +152,7 @@ let handleClickEvent=async (event)=>{
             if(!isPresent)
             {
                 favMovieList.push(movie);
-                localStorage.setItem('favMovieList',favMovieList);
+                localStorage.setItem('favMovieList',JSON.stringify(favMovieList));
                 addToFavouritesContainer(movie);
             }
     }
