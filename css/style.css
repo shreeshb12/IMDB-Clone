@@ -261,6 +261,51 @@ footer a:hover{
   color: #D2D3D5;
 }
 
+/* overlay */
+#overlay{
+  background-color: rgba(0, 0, 0,0.3);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  font-weight: bold;
+  position: fixed;
+  min-height:100vh;
+  width:100%;
+  top: 0%;
+  bottom: 0%;
+  right: 0%;
+  left: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none;
+  overflow-y: scroll;
+}
+#overlay-movie-card{
+  width: 70%;
+  min-height: 65%;
+  overflow-y: scroll;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(0, 0, 0) 0%,
+    rgb(64, 64, 64) 90.2%
+  );
+  box-shadow: 0px 16px 24px 2px hsla(0, 0%, 0%, 0.14),
+    0px 6px 30px 5px hsla(0, 0%, 0%, 0.12),
+    0px 8px 10px -5px hsla(0, 0%, 0%, 0.2);
+}
+
+.movie-main{
+  display: flex;
+  flex-wrap: wrap;
+}
+.info-type{
+  color:var(--logo-color);
+}
+.information{
+  color: #ffffff;
+}
+
 /* Responsive */
 
 @media screen and (max-width: 992px) {
@@ -323,6 +368,9 @@ footer a:hover{
   #show-favourites{
     visibility: visible;
   }
+  .overlay-movie-card{
+    margin-top: 0%;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -348,7 +396,7 @@ footer a:hover{
   .search-container{
     width:70%;
   }
-  .fa-star{
+  main .fa-star{
     font-size: 0.5rem;
   }
   .fa-heart,footer h5{

@@ -7,7 +7,8 @@ const emptyText=document.getElementById('empty-text');
 const emptyFavText=document.getElementById('empty-fav-text');
 const searchKeyword=document.getElementById('search');
 const suggestionsContainer=document.getElementById('suggestions-container');
-
+const overlay=document.getElementById('overlay');
+const overlayMovieCard=document.getElementById('overlay-movie-card');
 const suggestionList=[];
 let favMovieList=[];
 renderFavContainer();
@@ -54,13 +55,13 @@ let addToSuggestionsContainer=(data)=>{
         movieContainer.setAttribute('id',"card-container");
         movieContainer.innerHTML=`
         <div class="card my-2" data-id=" ${data.Title} " style="color:#121515;">
-        <a href="movie.html">
-          <img src=" ${data.Poster} " class="card-img-top" alt="..." data-id="${data.Title} ">
+        <a href="#" class="movie-details-overlay">
+          <img src=" ${data.Poster} " class="card-img-top movie-details-overlay" alt="..." data-id="${data.Title} ">
         </a>
         <div class="card-body" style="background-color: #121515;">
-          <a href="movie.html"></a>
+          <a href="" class="movie-details-overlay"></a>
           <h5 class="card-title">
-            <a href="movie.html" data-id="${data.Title} "> ${data.Title}  </a>
+            <a href="" class="movie-details-overlay" data-id="${data.Title} "> ${data.Title}  </a>
           </h5>
 
           <p class="card-text d-flex space-between w-100">
@@ -124,7 +125,7 @@ function addToFavouritesContainer(movie){
     div.innerHTML=`<img src="${movie.Poster}" alt="..." class="fav-movie-poster">
     <div class="movie-card-details ps-2">
       <p class="movie-name mt-3 mb-0">
-      <a href="movie.html" class="fav-movie-name" data-id="${movie.Title}">${movie.Title}</a><a> 
+      <a href="#" class="fav-movie-name movie-details-overlay" data-id="${movie.Title}">${movie.Title}</a><a> 
       </a></p><a>
       <small class="text-muted">${movie.Year}</small>
     </a></div>
@@ -148,6 +149,71 @@ let deleteFavMovie=(movie)=>{
     renderFavContainer();
 }
 
+// display movie details
+let displayMovieDetails= async (movie)=>{
+    
+    let data=await fetchData(movie);
+    if(data.Poster=='N/A')
+    {
+        data.Poster='././images/image-not-available-300x300.jpg';
+    }
+    overlayMovieCard.innerHTML=`
+    <!-- Title and rating container -->
+    <div
+    class="d-flex justify-content-between align-content-center mx-auto"
+    style="max-width: 70vw"
+  >
+    <div class="">
+      <h1 id="title" class="text-start">${data.Title}</h1>
+      <p id="year" class="text-info d-inline-block text-start" style="padding-left: 0;">${data.Year}</p>
+      <span id="runtime" class="ms-4 text-info text-start"> ${data.Runtime}</span>
+    </div>
+
+    <div>
+      <h6 class="mt-3 mb-0 ms-4 text-warning">Rating</h6>
+      <h5 class="mt-1">
+        <i class="fa fa-star info-type"></i> <span id="rating"> ${data.imdbRating}/10 </span>
+      </h5>
+    </div>
+    </div>
+    <!-- movie main -->
+    <div class="movie-main space-between">
+      <!-- movie poster -->
+      <div
+          class="col-md-3 d-flex justify-content-center justify-content-lg-start"
+        >
+          <img
+            id="poster"
+            src="${data.Poster}"
+            class="img-fluid rounded-start"
+            style="max-height: 400px"
+          />
+      </div>
+      <!-- movie details -->
+      <div class="col-md-8 m-2">
+        <div class="card-body mt-3">
+          
+          <p class="info-type" id="plot"><span id="plot" class="information">${data.Plot}</span></p>
+          <p class="info-type">
+            Directors :
+            <span id="director-names" class="information"${data.Director}</span>
+          </p>
+          <p class="info-type">
+            Cast :
+            <span id="cast-names" class="information">${data.Actors}</span>
+          </p>
+          <p class="info-type">
+            Genre :
+            <span id="genre" class="information">${data.Genre}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    `
+    overlay.style.display='flex';
+}
+
+// handle click events
 let handleClickEvent=async (event)=>{
     let target=event.target;
 
@@ -180,6 +246,15 @@ let handleClickEvent=async (event)=>{
     {
         console.log(target.dataset.id);
         deleteFavMovie(target.dataset.id);
+    }
+    else if(target.classList.contains('movie-details-overlay'))
+    {
+        event.preventDefault();
+        displayMovieDetails(target.dataset.id);
+    }
+    else if(target.id=='overlay')
+    {
+        overlay.style.display='none';
     }
     localStorage.setItem('MovieName',target.dataset.id);
 }
