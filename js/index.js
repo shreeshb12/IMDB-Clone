@@ -97,9 +97,10 @@ let fetchData= async (search)=>{
 
 // Render Favourites Movie Container
 function renderFavContainer(){
-   let favList=JSON.parse(localStorage.getItem('favMovieList'));
-
-    if(favList.length!=0)
+    let favList=[];
+    favList=JSON.parse(localStorage.getItem('favMovieList'));
+    console.log(favList);
+    if(favList!=null && favList.length!=0)
     {
         console.log(favList.length);
         emptyFavText.style.display='none';
