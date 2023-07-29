@@ -44,10 +44,10 @@
     <div id="super-container" class="d-flex ">
       <p id="empty-text" class="text-muted fs-1 p-3 m-4">Your search results will <br/>appear here...</p>
       <!-- main -->
-      <main id="suggestions-container" class="d-flex p-3">
+      <main id="suggestions-container" class="d-flex">
         <!-- card-container -->
         <div id="card-container" class="animate__animated animate__zoomIn ">
-          <!--<div class="card my-2" data-id=" Kantara " style="color:#121515;">
+          <div class="card my-2" data-id=" Kantara " style="color:#121515;">
             <a href="movie.html">
               <img src="https://m.media-amazon.com/images/M/MV5BNjQyNGI5OWEtZjI1Yy00NDVjLWE4MTAtMzRlNzU1NzM2OGVkXkEyXkFqcGdeQXVyMTA1NzEzOTU1._V1_SX300.jpg " class="card-img-top" alt="..." data-id="Kantara ">
             </a>
@@ -68,12 +68,15 @@
                 </button>
               </p>
             </div>            
-          </div>-->
+          </div>
         </div>
       </main>
       <!-- aside -->
       <aside id="favourites" class="d-flex flex-column ">
         <h2>Favourites</h2>
+        <h3 id="empty-fav-text" class="text-muted p-3" style="font-size: 1.5rem;">
+          Click on <i class="fa fa-heart" style="font-size: 1.3rem;"></i><br/> to add to Favourites
+        </h3>
         <div id="fav-movies-container" class=".flex-column">
           <!-- <div class="fav-movie-card d-flex justify-content-between align-content-center my-2">
             <img src="https://m.media-amazon.com/images/M/MV5BNjQyNGI5OWEtZjI1Yy00NDVjLWE4MTAtMzRlNzU1NzM2OGVkXkEyXkFqcGdeQXVyMTA1NzEzOTU1._V1_SX300.jpg" alt="" class="fav-movie-poster">
@@ -93,7 +96,7 @@
       </aside>
     </div>
     <footer class='bg-dark'>
-      <h5>Made with <i class="fa fa-heart" style="color: #ec0638;"></i> by <a href="https://github.com/shreeshb12" target="_blank" style="">Shreesh Badiger</a></i></h5>
+      <h5>Made with <i class="fa fa-heart" style="color: #ec0638;"></i> by <a href="https://github.com/shreeshb12" target="_blank" >Shreesh Badiger</a></i></h5>
     </footer>
     <script type="text/javascript" src="./js/index.js"></script>
 </body>

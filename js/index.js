@@ -4,12 +4,13 @@ const favBtn=document.getElementById('show-favourites');
 const favourites=document.getElementById('favourites');
 const favMovieContainer=document.getElementById('fav-movies-container');
 const emptyText=document.getElementById('empty-text');
+const emptyFavText=document.getElementById('empty-fav-text');
 const searchKeyword=document.getElementById('search');
 const suggestionsContainer=document.getElementById('suggestions-container');
 
 const suggestionList=[];
-const favMovieList=[];
-fetchFav();
+let favMovieList=[];
+renderFavContainer();
 // event listener on search
 searchKeyword.addEventListener('keyup',(event)=>{
     let search=searchKeyword.value;
@@ -49,7 +50,7 @@ let addToSuggestionsContainer=(data)=>{
         }
         suggestionList.push(data);
         const movieContainer=document.createElement('div');
-        movieContainer.setAttribute('class',"animate_animated animate_zoomIn");
+        movieContainer.setAttribute('class',"animate__animated animate__zoomIn ");
         movieContainer.setAttribute('id',"card-container");
         movieContainer.innerHTML=`
         <div class="card my-2" data-id=" ${data.Title} " style="color:#121515;">
@@ -93,16 +94,22 @@ let fetchData= async (search)=>{
 }
 
 
-// fetch movies from localStorage and add it to fav-movie-container
-function fetchFav(){
+// Render Favourites Movie Container
+function renderFavContainer(){
     favList=JSON.parse(localStorage.getItem('favMovieList'));
 
-    if(favList)
+    if(favList.length!=0)
     {
+        console.log(favList.length);
+        emptyFavText.style.display='none';
         favList.forEach((movie)=>{
             favMovieList.push(movie);
             addToFavouritesContainer(movie)
         })
+    }
+    else{
+        console.log(emptyFavText);
+        emptyFavText.style.display='block';
     }
 }
 
@@ -129,6 +136,18 @@ function addToFavouritesContainer(movie){
     favMovieContainer.prepend(div);
 }
 
+// delete the movie from favourites
+let deleteFavMovie=(movie)=>{
+    let movieList=JSON.parse(localStorage.getItem('favMovieList'));
+    let updatedList= movieList.filter((Movie)=>{
+        return Movie.Title!=movie;
+    })
+    localStorage.setItem('favMovieList',JSON.stringify(updatedList));
+    favMovieList=[];
+    favMovieContainer.innerHTML='';
+    renderFavContainer();
+}
+
 let handleClickEvent=async (event)=>{
     let target=event.target;
 
@@ -151,10 +170,16 @@ let handleClickEvent=async (event)=>{
         })
             if(!isPresent)
             {
+                emptyFavText.style.display='none';
                 favMovieList.push(movie);
                 localStorage.setItem('favMovieList',JSON.stringify(favMovieList));
                 addToFavouritesContainer(movie);
             }
+    }
+    else if(target.classList.contains('fa-trash'))
+    {
+        console.log(target.dataset.id);
+        deleteFavMovie(target.dataset.id);
     }
     localStorage.setItem('MovieName',target.dataset.id);
 }

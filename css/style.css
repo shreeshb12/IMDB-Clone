@@ -18,6 +18,7 @@
 }
 ::-webkit-scrollbar{
   visibility: hidden;
+  display: none;
 }
 ::placeholder {
   color: #D2D3D5;
@@ -124,38 +125,38 @@ input:focus{
 }
 /* supper container */
 #super-container{
-  /* position: relative; */
+  position: relative;
   
 }
 /* suggestion container */
 main{
-  min-width: 60%;
-  max-height: 100%;
-  position: relative;
+  min-width: 75%;
   display: flex;
   flex-wrap: wrap;
   position: fixed;
   left: 0;
   right: 25%;
   overflow-y: scroll;
-  top: 10%;
-  bottom: 10%;
+  overflow-x: hidden;
+  top: 10vh;
+  bottom: 10vh;
 }
 /* movie card */
 #card-container{
-  width: 10rem;
+  width: 9rem;
+  min-height:30vh;
+  max-height: 55vh;
   display: flex;
   justify-content: center;
   align-items: first baseline;
-  position: relative;
   margin: 1.6rem;
   margin-top:20px;
 }
 .card{
-  width: 10rem;
+  width: 9rem;
   height:100%;
   border:0;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .card-body{
   border-radius:0 0 5px 5px;
@@ -190,36 +191,31 @@ main{
 
 /* favourites */
 aside{
-  min-height:100%!important;
   overflow-y: scroll!important;
-}
-aside::-webkit-scrollbar{
-  display: none;
+  overflow-x: hidden;
 }
 #favourites{
   min-width: 25vw;
-  min-height: 90vh;
+  height: 100vh;
   background-color: var(--favourite-section-color);
   font-family: var(--bs-font-sans-serif);
   color:var(--logo-color);
   position: fixed;
   right: 0;
-  overflow-y: scroll;
+  padding-bottom: 20vh;
 }
 
 #fav-movies-container {
-  overflow-y: scroll;
-  width: 95%;
-  height: 90%;
-  border-radius: 5px;
+  min-width: 100%;
+  border-radius: 10px;
   margin:5%!important;
 }
 
 .fav-movie-card {
   padding-right: 1rem;
-  width: 100%;
+  width: 90%;
   background-color: var(--fav-movie-card-color);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .fav-movie-card a{
   color: var(--default-text-color);
@@ -233,10 +229,11 @@ aside::-webkit-scrollbar{
 
 .movie-card-details {
   width: 60%;
+  font-size: 1rem;
 }
 
 .fa-trash{
-  font-size:1.5rem;
+  font-size:1rem;
   color: var(--delete-button-color);
 }
 .fa-trash:hover{
@@ -246,7 +243,7 @@ aside::-webkit-scrollbar{
 /* footer */
 footer{
   width: 100%;
-  height: 10%;
+  height: 10vh;
   position: absolute;
   bottom: 0%;
   display: flex;
@@ -276,14 +273,11 @@ footer a:hover{
   #search-btn{
     right:4rem;
   }
-  #fav-movies-container{
-    height:75%;
-  }
   .fav-movie-card{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   .fa-trash{
-    font-size:0.9rem;
+    font-size:0.8rem;
   }
 }
 
@@ -291,12 +285,29 @@ footer a:hover{
   #brand-name,#brand-icon {
     transform: scale(0.7);
   }
-
+  #card-container {
+    width: 8rem;
+    max-height:none;
+  }
+  .card-body{
+    max-height: 100%;
+  }
   #brand-icon img{
     width:25px;
     height:25px;
   }
-
+  main{
+    width: 100%;
+    padding: 0.6rem!important;
+  }
+  .card{
+    width: 8rem;
+    height: 100%;
+    font-size: 0.8rem;
+  }
+  .card-body h5 a{
+    font-size: 0.8rem!important;
+  }
   form{
     width: 20rem;
   }
@@ -306,15 +317,11 @@ footer a:hover{
   #search-btn{
     right:1rem;
   }
-
   #favourites {
     transform: translateX(100%);
   }
   #show-favourites{
     visibility: visible;
-  }
-  #fav-movies-container{
-    width: 100%;
   }
 }
 
@@ -322,11 +329,10 @@ footer a:hover{
   form{
     width: 15rem;
   }
-  main{
-    width: 90%;
-  }
+  /* aside{
+    top: 15%;
+  } */
   .card-body,#card-container{
-    width: 6rem;
     font-size: 0.8rem;
   }
   .card a{
@@ -346,9 +352,22 @@ footer a:hover{
     font-size: 0.5rem;
   }
   .fa-heart,footer h5{
-    font-size: 0.5rem;
+    font-size: 0.7rem;
   }
   .card-text{
     align-items: center;
+  }
+  #fav-movies-container{
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 420px){
+  #card-container {
+    width: 7rem;
+    max-height: 47vh;
+  }
+  .card-body h5 a{
+    font-size: 0.7rem;
   }
 }
