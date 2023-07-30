@@ -197,7 +197,7 @@ let displayMovieDetails= async (movie)=>{
           <p class="info-type" id="plot"><span id="plot" class="information">${data.Plot}</span></p>
           <p class="info-type">
             Directors :
-            <span id="director-names" class="information"${data.Director}</span>
+            <span id="director-names" class="information">${data.Director}</span>
           </p>
           <p class="info-type">
             Cast :
