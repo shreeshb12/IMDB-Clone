@@ -99,10 +99,8 @@ let fetchData= async (search)=>{
 function renderFavContainer(){
     let favList=[];
     favList=JSON.parse(localStorage.getItem('favMovieList'));
-    console.log(favList);
     if(favList!=null && favList.length!=0)
     {
-        console.log(favList.length);
         emptyFavText.style.display='none';
         favList.forEach((movie)=>{
             favMovieList.push(movie);
@@ -110,7 +108,6 @@ function renderFavContainer(){
         })
     }
     else{
-        console.log(emptyFavText);
         emptyFavText.style.display='block';
     }
 }
@@ -227,7 +224,6 @@ let handleClickEvent=async (event)=>{
     {
         let movie= await fetchData(target.dataset.id);
         let isPresent=false;
-        console.log(favMovieList);
         //check if the movie is already in favourite list
         favMovieList.forEach((data)=>{
             if(data.Title==movie.Title)
@@ -245,7 +241,6 @@ let handleClickEvent=async (event)=>{
     }
     else if(target.classList.contains('fa-trash'))
     {
-        console.log(target.dataset.id);
         deleteFavMovie(target.dataset.id);
     }
     else if(target.classList.contains('movie-details-overlay'))
