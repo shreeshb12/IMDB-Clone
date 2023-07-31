@@ -9,8 +9,8 @@ This project is a clone of IMDB website. It is created by using Html,Css,Javascr
 - Bootstrap
 
 ## Glimpse of Website
-![Homepage](./screenshots/1.jpg)
-![Movie Details](./screenshots/1.jpg)
+![Homepage](./screenshots/1.JPG)
+![Movie Details](./screenshots/1.JPG)
 
 
 ## Authors
